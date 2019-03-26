@@ -1191,6 +1191,22 @@ Now he is in serious pain.''')
                     print("That's incorrect. Try using different wording. Or just get rekt m8.")
                     engine.say("That's incorrect. Try using different wording. Or just get wrecked mate.")
                     engine.runAndWait()
+    elif x == "search":
+        engine.say("What do you want to search on google?")
+        engine.runAndWait()
+        s = input("What do you want to search on Google? ")
+        def main(args):
+            def quote(arg):
+                if ' ' in arg:
+                    arg = '"%s"' % arg
+                return urllib.parse.quote_plus(arg)
+
+            # qstring = '+'.join(quote(arg) for arg in args)
+            url = urllib.parse.urljoin('https://www.google.com/search', '?q=' + s)
+            webbrowser.open(url)
+
+        if __name__ == '__main__':
+            main(sys.argv[1:])
                     
     elif x == "mute":
         engine.setProperty("volume", 0)
