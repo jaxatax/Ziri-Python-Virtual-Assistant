@@ -1,2 +1,2 @@
 # Ziri-Python-Virtual-Assistant
-A python virtual assistan
+A python virtual assistant
