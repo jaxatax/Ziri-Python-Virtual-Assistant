@@ -1207,7 +1207,126 @@ Now he is in serious pain.''')
 
         if __name__ == '__main__':
             main(sys.argv[1:])
-                    
+    
+    elif x == "iq test":
+        iq = 50
+        
+        print("Question 1:")
+        engine.say("Question 1,")
+        engine.runAndWait()
+        engine.say("What is 2 + 3?")
+        engine.runAndWait()
+        q = input("What is 2 + 3? ")
+        if q == "5":
+            print("Good job! You got it right.")
+            engine.say("Good job! You got it right.")
+            engine.runAndWait()
+            iq += 10
+        else:
+            print("No. The answer is obviously 5.")
+            engine.say("No. The answer is obviously 5.")
+            engine.runAndWait()
+            iq += -10
+        
+        print("Question 2:")
+        engine.say("Question 2,")
+        engine.runAndWait()
+        engine.say("What is the opposite of hot?")
+        engine.runAndWait()
+        q = input("What is the opposite of hot? ")
+        if q == "cold":
+            print("Good job! You got it right.")
+            engine.say("Good job! You got it right.")
+            engine.runAndWait()
+            iq += 10
+        else:
+            print("No. The answer is obviously cold.")
+            engine.say("No. The answer is obviously cold.")
+            engine.runAndWait()
+            iq += -10
+        
+        print("Question 3:")
+        engine.say("Question 3,")
+        engine.runAndWait()
+        engine.say("What is 202 + 35?")
+        engine.runAndWait()
+        q = input("What is 202 + 35? ")
+        if q == "237":
+            print("Good job! You got it right.")
+            engine.say("Good job! You got it right.")
+            engine.runAndWait()
+            iq += 10
+        else:
+            print("No. The answer is obviously 237.")
+            engine.say("No. The answer is obviously 237.")
+            engine.runAndWait()
+            iq += -10
+
+        print("Question 4:")
+        engine.say("Question 4,")
+        engine.runAndWait()
+        engine.say("Is Xbox better than Playstation?")
+        engine.runAndWait()
+        q = input("Is Xbox better than Playstation? ")
+        if q == "yes":
+            print("Good job! You got it right.")
+            engine.say("Good job! You got it right.")
+            engine.runAndWait()
+            iq += 10
+        else:
+            print("No. Xbox is obviously better.")
+            engine.say("No. Xbox is obviously better.")
+            engine.runAndWait()
+            iq += -10
+        
+        print("Question 5:")
+        engine.say("Question 5,")
+        engine.runAndWait()
+        engine.say("What does the E stand for in E equals m c squared?")
+        engine.runAndWait()
+        q = input("What does the E stand for in E=mc^2? ")
+        if q == "energy":
+            print("Good job! You got it right.")
+            engine.say("Good job! You got it right.")
+            engine.runAndWait()
+            iq += 10
+        else:
+            print("No. E obviously stands for energy.")
+            engine.say("No. E obviously stands for energy.")
+            engine.runAndWait()
+            iq += -10
+
+        print("Question 6:")
+        engine.say("Question 6,")
+        engine.runAndWait()
+        engine.say("What does DY stand for on the periodic table?")
+        engine.runAndWait()
+        q = input("What does DY stand for on the periodic table? ")
+        if q == "dysprosium":
+            print("Good job! You got it right.")
+            engine.say("Good job! You got it right.")
+            engine.runAndWait()
+            iq += 10
+        else:
+            print("No. DY obviously stands for dysprosium.")
+            engine.say("No. D Y obviously stands for dysprosium.")
+            engine.runAndWait()
+            iq += -10
+        
+        #after all questions
+        if iq > 100:
+            print("Your IQ was " + str(iq) + ". You're above average!")
+            engine.say("Your IQ was " + str(iq) + ". You're above average!")
+            engine.runAndWait()
+        elif iq == 100:
+            print("Your IQ was " + str(iq) + ". You're average.")
+            engine.say("Your IQ was " + str(iq) + ". You're average.")
+            engine.runAndWait()
+        else:
+            print("Your IQ was " + str(iq) + ". Maybe you should go back to second grade.")
+            engine.say("Your IQ was " + str(iq) + ". Maybe you should go back to second grade.")
+            engine.runAndWait()
+    
     elif x == "mute":
         engine.setProperty("volume", 0)
 
@@ -1271,3 +1390,4 @@ Now he is in serious pain.''')
             print("Sorry, I don't know that command.")
             engine.say("Sorry, I don't know that command.")
             engine.runAndWait()
+
