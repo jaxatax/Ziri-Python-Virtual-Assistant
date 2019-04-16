@@ -1875,9 +1875,9 @@ Now he is in serious pain.''')
             computerChoice = randint(0,8)
 
         print('''  1 2 3
-        a _|_|_
-        b _|_|_
-        c  | | ''')
+a _|_|_
+b _|_|_
+c  | | ''')
 
         engine.say("Do you want easy or hard difficulty?")
         engine.runAndWait()
@@ -2450,40 +2450,40 @@ Now he is in serious pain.''')
         wordChoice = words[randint(0,20)]
 
         hangmen = [''' ___
-        /   |
-        |
-        |
-        |
-        ''',''' ___
-        /   |
-        |   O
-        |
-        |
-        ''',''' ___
-        /   |
-        |   O
-        |   |
-        |
-        ''',''' ___
-        /   |
-        |   O
-        |  /|
-        |
-        ''',''' ___
-        /   |
-        |   O
-        |  /|\\
-        |
-        ''',''' ___
-        /   |
-        |   O
-        |  /|\\
-        |  /
-        ''',''' ___
-        /   |
-        |   O
-        |  /|\\
-        |  / \ ''']
+/   |
+|
+|
+|
+''',''' ___
+/   |
+|   O
+|
+|
+''',''' ___
+/   |
+|   O
+|   |
+|
+''',''' ___
+/   |
+|   O
+|  /|
+|
+''',''' ___
+/   |
+|   O
+|  /|\\
+|
+''',''' ___
+/   |
+|   O
+|  /|\\
+|  /
+''',''' ___
+/   |
+|   O
+|  /|\\
+|  / \ ''']
 
         numberOfCharacters = len(wordChoice)
         hangmanNumber = 0
