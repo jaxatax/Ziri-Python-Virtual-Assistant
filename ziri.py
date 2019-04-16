@@ -23,7 +23,7 @@ gp = 0
 while True:
     x = input("Type what you want me to do here. ")
     x = x.lower()
-    n = randint(1,5)
+    n = randint(1,10)
     if n == 1:
         engine.setProperty("rate",200)
         print("You've got mail!")
@@ -799,21 +799,26 @@ Now he is in serious pain.''')
     elif x == "weather":
         #https://www.geeksforgeeks.com/get-post-requests-using-python/
         engine.setProperty("rate",200)
-        URL = "https://api.weather.gov/stations/KDAL/observations/latest/"
-        server_response = requests.get(url = URL)
-        data = server_response.json()
-        temperature = data['properties']['temperature']['value']
-        temperature = int(temperature * 9 / 5 + 32)
-        weather_condition = data['properties']['textDescription']
-        weather_condition = weather_condition.lower()
-        temperature = str(temperature)
-        if int(temperature) < 60:
-            print("It's a chilly " + temperature + " degrees Fahrenheit and " + weather_condition + ".")
-            engine.say("It's a chilly" + temperature + "degrees Fahrenheit and" + weather_condition)
-            engine.runAndWait()
-        else:
-            print("It's a balmy " + temperature + " degrees Fahrenheit and " + weather_condition + ".")
-            engine.say("It's a balmy" + temperature + "degrees Fahrenheit and" + weather_condition)
+        try:
+            URL = "https://api.weather.gov/stations/KDAL/observations/latest/"
+            server_response = requests.get(url = URL)
+            data = server_response.json()
+            temperature = data['properties']['temperature']['value']
+            temperature = int(temperature * 9 / 5 + 32)
+            weather_condition = data['properties']['textDescription']
+            weather_condition = weather_condition.lower()
+            temperature = str(temperature)
+            if int(temperature) < 60:
+                print("It's a chilly " + temperature + " degrees Fahrenheit and " + weather_condition + ".")
+                engine.say("It's a chilly" + temperature + "degrees Fahrenheit and" + weather_condition)
+                engine.runAndWait()
+            else:
+                print("It's a balmy " + temperature + " degrees Fahrenheit and " + weather_condition + ".")
+                engine.say("It's a balmy" + temperature + "degrees Fahrenheit and" + weather_condition)
+                engine.runAndWait()
+        except:
+            print("You must be connected to the internet to access weather.")
+            engine.say("You must be connected to the internet to access weather.")
             engine.runAndWait()
 
     elif x == "calculator":
@@ -1039,6 +1044,7 @@ Now he is in serious pain.''')
             main(sys.argv[1:])
 
     elif x == "birthday":
+        engine.setProperty("rate",200)
         print("It's your birthday!")
         engine.say("It's your birthday!")
         engine.runAndWait()
@@ -1050,6 +1056,7 @@ Now he is in serious pain.''')
         engine.runAndWait()
 
     elif x == "easter egg":
+        engine.setProperty("rate",200)
         print("Good job! You found an Easter egg!")
         engine.say("Good job! You found an Easter egg!")
         engine.runAndWait()
@@ -1059,6 +1066,7 @@ Now he is in serious pain.''')
         engine.runAndWait()
 
     elif x == "rps":
+        engine.setPropery("rate",200)
         engine.say("Type rock for rock, paper for paper, or scissors for scissors.")
         engine.runAndWait()
         p = input('Type "rock" for rock, "paper" for paper, or "scissors" for scissors. ')
@@ -1089,6 +1097,7 @@ Now he is in serious pain.''')
             engine.runAndWait()
 
     elif x == "sound game":
+        engine.setProperty("rate",200)
         w = True
         s = randint(1,4)
         while True:
@@ -1191,7 +1200,9 @@ Now he is in serious pain.''')
                     print("That's incorrect. Try using different wording. Or just get rekt m8.")
                     engine.say("That's incorrect. Try using different wording. Or just get wrecked mate.")
                     engine.runAndWait()
+    
     elif x == "search":
+        engine.setProperty("rate",200)
         engine.say("What do you want to search on google?")
         engine.runAndWait()
         s = input("What do you want to search on Google? ")
@@ -1209,12 +1220,12 @@ Now he is in serious pain.''')
             main(sys.argv[1:])
     
     elif x == "iq test":
-        iq = 50
+        #specifically made to upset people
+        engine.setProperty("rate",200)
+        iq = 100
         
         print("Question 1:")
-        engine.say("Question 1,")
-        engine.runAndWait()
-        engine.say("What is 2 + 3?")
+        engine.say("Question 1. What is 2 + 3?")
         engine.runAndWait()
         q = input("What is 2 + 3? ")
         if q == "5":
@@ -1229,11 +1240,9 @@ Now he is in serious pain.''')
             iq += -10
         
         print("Question 2:")
-        engine.say("Question 2,")
+        engine.say("Question 2. What is the opposite of hot?")
         engine.runAndWait()
-        engine.say("What is the opposite of hot?")
-        engine.runAndWait()
-        q = input("What is the opposite of hot? ")
+        q = input("What is the opposite of hot? ").lower()
         if q == "cold":
             print("Good job! You got it right.")
             engine.say("Good job! You got it right.")
@@ -1246,9 +1255,7 @@ Now he is in serious pain.''')
             iq += -10
         
         print("Question 3:")
-        engine.say("Question 3,")
-        engine.runAndWait()
-        engine.say("What is 202 + 35?")
+        engine.say("Question 3. What is 202 + 35?")
         engine.runAndWait()
         q = input("What is 202 + 35? ")
         if q == "237":
@@ -1263,11 +1270,9 @@ Now he is in serious pain.''')
             iq += -10
 
         print("Question 4:")
-        engine.say("Question 4,")
+        engine.say("Question 4. Is Xbox better than Playstation?")
         engine.runAndWait()
-        engine.say("Is Xbox better than Playstation?")
-        engine.runAndWait()
-        q = input("Is Xbox better than Playstation? ")
+        q = input("Is Xbox better than Playstation? ").lower()
         if q == "yes":
             print("Good job! You got it right.")
             engine.say("Good job! You got it right.")
@@ -1280,11 +1285,9 @@ Now he is in serious pain.''')
             iq += -10
         
         print("Question 5:")
-        engine.say("Question 5,")
+        engine.say("Question 5. What does the E stand for in E equals m c squared?")
         engine.runAndWait()
-        engine.say("What does the E stand for in E equals m c squared?")
-        engine.runAndWait()
-        q = input("What does the E stand for in E=mc^2? ")
+        q = input("What does the E stand for in E=mc^2? ").lower()
         if q == "energy":
             print("Good job! You got it right.")
             engine.say("Good job! You got it right.")
@@ -1297,21 +1300,79 @@ Now he is in serious pain.''')
             iq += -10
 
         print("Question 6:")
-        engine.say("Question 6,")
+        engine.say("Question 6. What does Dy stand for on the periodic table?")
         engine.runAndWait()
-        engine.say("What does DY stand for on the periodic table?")
-        engine.runAndWait()
-        q = input("What does DY stand for on the periodic table? ")
+        q = input("What does D Y stand for on the periodic table? ").lower()
         if q == "dysprosium":
             print("Good job! You got it right.")
             engine.say("Good job! You got it right.")
             engine.runAndWait()
             iq += 10
         else:
-            print("No. DY obviously stands for dysprosium.")
+            print("No. Dy obviously stands for dysprosium.")
             engine.say("No. D Y obviously stands for dysprosium.")
             engine.runAndWait()
             iq += -10
+
+        print("Question 7:")
+        engine.say("Question 7. How much wood could a woodchuck chuck if a woodchuck could chuck wood?")
+        engine.runAndWait()
+        q = input("How much wood could a woodchuck chuck if a woodchuck could chuck wood? ").lower()
+        if q == "5 pieces":
+            print("Good job! You got it right.")
+            engine.say("Good job! You got it right.")
+            engine.runAndWait()
+            iq += 10
+        else:
+            print("No. If a woodchuck could chuck wood, the woodchuck would obviously have a wood-chucking capacity of 5 pieces.")
+            engine.say("No. If a woodchuck could chuck wood, the woodchuck would obviously have a wood chucking capacity of 5 pieces.")
+            engine.runAndWait()
+            iq += -10
+
+        print("Question 8:")
+        engine.say("Question 8. Should you put the toilet paper roll so that the end is facing outward or inward?")
+        engine.runAndWait()
+        q = input("Should you put the toilet paper roll so that the end is facing outward or inward? ").lower()
+        if q == "outward" or q == "facing outward":
+            print("Good job! You got it right.")
+            engine.say("Good job! You got it right.")
+            engine.runAndWait()
+            iq += 10
+        else:
+            print("No. The toilet paper roll should obviously face outward, because that allows easier access to the end.")
+            engine.say("No. The toilet paper roll should obviously face outward, because that allows easier access to the end.")
+            engine.runAndWait()
+            iq += -10
+
+        print("Question 9:")
+        engine.say("Question 9. Multiply 60,111,227 by 50, subtract 21, then take the square root. What is the answer?")
+        engine.runAndWait()
+        q = input("Multiply 60,111,227 by 50, subtract 21, then take the square root. What is the answer? ")
+        if q == "54823":
+            print("CHEATER!")
+            engine.say("Cheater!")
+            engine.runAndWait()
+            iq += 10
+        else:
+            print("No. The answer is obviously 54823.")
+            engine.say("No. The answer is obviously 54823.")
+            engine.runAndWait()
+            iq += -10
+
+        print("Question 10:")
+        engine.say("Question 10. Is Ziri better than Siri?")
+        engine.runAndWait()
+        q = input("Is Ziri better than Siri? ").lower()
+        if q == "yes":
+            print("Good job! You got it right. Here are your results:")
+            engine.say("Good job! You got it right. Here are your results:")
+            engine.runAndWait()
+            iq += 10
+        else:
+            print("I'm not talking to you anymore, traitor.")
+            engine.say("I'm not talking to you anymore, traitor.")
+            engine.runAndWait()
+            break
         
         #after all questions
         if iq > 100:
@@ -1326,13 +1387,1174 @@ Now he is in serious pain.''')
             print("Your IQ was " + str(iq) + ". Maybe you should go back to second grade.")
             engine.say("Your IQ was " + str(iq) + ". Maybe you should go back to second grade.")
             engine.runAndWait()
-    
+
+    elif x == "survey":
+        #going to add a website that this sends the survey data to
+        engine.setProperty("rate",200)
+        print('If you are not comfortable with answering a question, type "x".')
+        engine.say("If you are not comfortable with answering a question, type x.")
+        
+        engine.say("What is your full name?")
+        engine.runAndWait()
+        name = input("What is your full name? ")
+        
+        engine.say("What is your age?")
+        engine.runAndWait()
+        age = input("What is your age? ")
+        
+        engine.say("What is your address?")
+        engine.runAndWait()
+        address = input("What is your address? ")
+
+        engine.say("What is your yearly income? Type unemployed if you don't have a job.")
+        engine.runAndWait()
+        yearlyIncome = input('What is your yearly income? Type "unemployed" if you don\'t have a job. ')
+
+        engine.say("Where do you work? Type unemployed if you don't have a job.")
+        engine.runAndWait()
+        jobLocation = input('Where do you work? Type "unemployed" if you don\'t have a job. ')
+        
+        engine.say("How many felonies have you committed?")
+        engine.runAndWait()
+        feloniesCommitted = input("How many felonies have you committed? ")
+        
+        engine.say("How many pets do you own?")
+        engine.runAndWait()
+        petsOwned = input("How may pets do you own? ")
+        
+        engine.say("Have you ever smoked?")
+        engine.runAndWait()
+        smoked = input("Have you ever smoked? ")
+        
+        engine.say("Are you married?")
+        engine.runAndWait()
+        married = input("Are you married? ")
+
+        print("What is your bank account number?")
+        engine.say("What is your bank account number?")
+        engine.runAndWait()
+        print("Just kidding!")
+        engine.say("Just kidding!")
+        engine.runAndWait()
+
+        engine.say("Have you found any bugs in Ziri? If you have, describe them. Otherwise, type none.")
+        engine.runAndWait()
+        bugs = input('Have you found any bugs in Ziri? If you have, describe them. Otherwise, type "none". ')
+        
+        engine.say("Are you enjoying Ziri?")
+        engine.runAndWait()
+        enjoyingZiri = input("Are you enjoying Ziri? ")
+
+        print("Thanks!")
+        engine.say("Thanks!")
+        engine.runAndWait()
+
+    elif x == "story":
+        def propernoun():
+            global propernounThing
+            n = randint(1,50)
+            if n == 1:
+                propernounThing = "Barry "
+            elif n == 2:
+                propernounThing = "Sarah "
+            elif n == 3:
+                propernounThing = "Chris "
+            elif n == 4:
+                propernounThing = "Todd "
+            elif n == 5:
+                propernounThing = "Agatha "
+            elif n == 6:
+                propernounThing = "Phillip Bartholomew III "
+            elif n == 7:
+                propernounThing = "Hudson "
+            elif n == 8:
+                propernounThing = "Timmy "
+            elif n == 9:
+                propernounThing = "Greg "
+            elif n == 10:
+                propernounThing = "James "
+            elif n == 11:
+                propernounThing = "Richard "
+            elif n == 12:
+                propernounThing = "Little Miss Muffet "
+            elif n == 13:
+                propernounThing = "Humpty Dumpty "
+            elif n == 14:
+                propernounThing = "Bailey "
+            elif n == 15:
+                propernounThing = "Jonesy "
+            elif n == 16:
+                propernounThing = "Dylan "
+            elif n == 17:
+                propernounThing = "Harry Potter "
+            elif n == 18:
+                propernounThing = "Noah "
+            elif n == 19:
+                propernounThing = "Eugene "
+            elif n == 20:
+                propernounThing = "Samuel "
+            elif n == 21:
+                propernounThing = "Nicholas "
+            elif n == 22:
+                propernounThing = "Mickey "
+            elif n == 23:
+                propernounThing = "Juan "
+            elif n == 24:
+                propernounThing = "Fred "
+            elif n == 25:
+                propernounThing = "Rodrick "
+            elif n == 26:
+                propernounThing = "Liam "
+            elif n == 27:
+                propernounThing = "Pete "
+            elif n == 28:
+                propernounThing = "Joey "
+            elif n == 29:
+                propernounThing = "David "
+            elif n == 30:
+                propernounThing = "Madison "
+            elif n == 31:
+                propernounThing = "Maggie "
+            elif n == 32:
+                propernounThing = "Tom "
+            elif n == 33:
+                propernounThing = "Whitney "
+            elif n == 34:
+                propernounThing = "Natalie "
+            elif n == 35:
+                propernounThing = "Rose "
+            elif n == 36:
+                propernounThing = "Emma "
+            elif n == 37:
+                propernounThing = "Mia "
+            elif n == 38:
+                propernounThing = "Anna "
+            elif n == 39:
+                propernounThing = "Martha "
+            elif n == 40:
+                propernounThing = "Amy "
+            elif n == 41:
+                propernounThing = "Florence "
+            elif n == 42:
+                propernounThing = "Amelia "
+            elif n == 43:
+                propernounThing = "Mary "
+            elif n == 44:
+                propernounThing = "Elizabeth "
+            elif n == 45:
+                propernounThing = "Jessica "
+            elif n == 46:
+                propernounThing = "Abby "
+            elif n == 47:
+                propernounThing = "Chloe "
+            elif n == 48:
+                propernounThing = "Amber "
+            elif n == 49:
+                propernounThing = "Isabelle "
+            elif n == 50:
+                propernounThing = "Hannah "
+
+        def verb():
+            global verbThing
+            n = randint(1,25)
+            if n == 1:
+                verbThing = "walked to a "
+            elif n == 2:
+                verbThing = "ate a "
+            elif n == 3:
+                verbThing = "killed a "
+            elif n == 4:
+                verbThing = "punched a "
+            elif n == 5:
+                verbThing = "ran into a "
+            elif n == 6:
+                verbThing = "shot a "
+            elif n == 7:
+                verbThing = "spit on a "
+            elif n == 8:
+                verbThing = "tripped over a "
+            elif n == 9:
+                verbThing = "threw up a "
+            elif n == 10:
+                verbThing = "farted a "
+            elif n == 11:
+                verbThing = "turned into a "
+            elif n == 12:
+                verbThing = "bought a "
+            elif n == 13:
+                verbThing = "kissed a "
+            elif n == 14:
+                verbThing = "stole a "
+            elif n == 15:
+                verbThing = "vaporized a "
+            elif n == 16:
+                verbThing = "sat on a "
+            elif n == 17:
+                verbThing = "stabbed a "
+            elif n == 18:
+                verbThing = "painted a "
+            elif n == 19:
+                verbThing = "sold a "
+            elif n == 20:
+                verbThing = "found a "
+            elif n == 21:
+                verbThing = "washed a "
+            elif n == 22:
+                verbThing = "vacuumed a "
+            elif n == 23:
+                verbThing = "wrote a story about a "
+            elif n == 24:
+                verbThing = "melted a "
+            elif n == 25:
+                verbThing = "documented the first "
+
+        def endingVerb():
+            global endingVerbThing
+            n = randint(1,25)
+            q = str(randint(10,1000))
+            if n == 1:
+                endingVerbThing = "exploded"
+            elif n == 2:
+                endingVerbThing = "tripped and smashed to bits on the concrete"
+            elif n == 3:
+                endingVerbThing = "fell off a cliff"
+            elif n == 4:
+                endingVerbThing = "spontaneously combusted"
+            elif n == 5:
+                endingVerbThing = "was crushed by a falling piano"
+            elif n == 6:
+                endingVerbThing = "had a heart attack"
+            elif n == 7:
+                endingVerbThing = "was struck by lightning"
+            elif n == 8:
+                endingVerbThing = "got married"
+            elif n == 9:
+                endingVerbThing = "fell into a gutter"
+            elif n == 10:
+                endingVerbThing = "got run over"
+            elif n == 11:
+                endingVerbThing = "was arrested for capital murder"
+            elif n == 12:
+                endingVerbThing = "was arrested for shoplifting and smashing store windows"
+            elif n == 13:
+                endingVerbThing = "was arrested for inciting a riot"
+            elif n == 14:
+                endingVerbThing = "fell asleep in the middle of a railroad track"
+            elif n == 15:
+                endingVerbThing = "went to the movies"
+            elif n == 16:
+                endingVerbThing = "had an identity crisis"
+            elif n == 17:
+                endingVerbThing = "fell down and couldn't get up"
+            elif n == 18:
+                endingVerbThing = "went to the library"
+            elif n == 19:
+                endingVerbThing = "bought a new car"
+            elif n == 20:
+                endingVerbThing = "won the lottery"
+            elif n == 21:
+                endingVerbThing = "read a book for the first time"
+            elif n == 22:
+                endingVerbThing = "learned what a refrigerator is"
+            elif n == 23:
+                endingVerbThing = "went to college"
+            elif n == 24:
+                endingVerbThing = "lost " + q + " pounds"
+            elif n == 25:
+                endingVerbThing = "gained " + q + " pounds"
+            
+        def adj():
+            global adjThing
+            n = randint(1,25)
+            if n == 1:
+                adjThing = "blue "
+            elif n == 2:
+                adjThing = "mean "
+            elif n == 3:
+                adjThing = "purple "
+            elif n == 4:
+                adjThing = "rotten "
+            elif n == 5:
+                adjThing = "beautiful "
+            elif n == 6:
+                adjThing = "boring "
+            elif n == 7:
+                adjThing = "red "
+            elif n == 8:
+                adjThing = "speedy "
+            elif n == 9:
+                adjThing = "lazy "
+            elif n == 10:
+                adjThing = "wet "
+            elif n == 11:
+                adjThing = "furry "
+            elif n == 12:
+                adjThing = "yellow "
+            elif n == 13:
+                adjThing = "polka-dotted "
+            elif n == 14:
+                adjThing = "transparent "
+            elif n == 15:
+                adjThing = "striped "
+            elif n == 16:
+                adjThing = "hairy "
+            elif n == 17:
+                adjThing = "stinky "
+            elif n == 18:
+                adjThing = "green "
+            elif n == 19:
+                adjThing = "sleepy "
+            elif n == 20:
+                adjThing = "fragrant "
+            elif n == 21:
+                adjThing = "fat "
+            elif n == 22:
+                adjThing = "sick "
+            elif n == 23:
+                adjThing = "wooden "
+            elif n == 24:
+                adjThing = "pointy "
+            elif n == 25:
+                adjThing = "stone "
+            
+        def noun():
+            global nounThing
+            n = randint(1,25)
+            if n == 1:
+                nounThing = "dog"
+            elif n == 2:
+                nounThing = "pickle"
+            elif n == 3:
+                nounThing = "television"
+            elif n == 4:
+                nounThing = "bed"
+            elif n == 5:
+                nounThing = "fire truck"
+            elif n == 6:
+                nounThing = "car"
+            elif n == 7:
+                nounThing = "toothbrush"
+            elif n == 8:
+                nounThing = "book"
+            elif n == 9:
+                nounThing = "toilet"
+            elif n == 10:
+                nounThing = "Rubik's Cube"
+            elif n == 11:
+                nounThing = "piece of aluminum foil"
+            elif n == 12:
+                nounThing = "cardboard box"
+            elif n == 13:
+                nounThing = "vase"
+            elif n == 14:
+                nounThing = "carpet"
+            elif n == 15:
+                nounThing = "mouse"
+            elif n == 16:
+                nounThing = "zebra"
+            elif n == 17:
+                nounThing = "cow"
+            elif n == 18:
+                nounThing = "aardvark"
+            elif n == 19:
+                nounThing = "shark"
+            elif n == 20:
+                nounThing = "large intestine"
+            elif n == 21:
+                nounThing = "small intestine"
+            elif n == 22:
+                nounThing = "calculator"
+            elif n == 23:
+                nounThing = "microwave"
+            elif n == 24:
+                nounThing = "Xbox"
+            elif n == 25:
+                nounThing = "house"
+
+        def endSentence():
+            global endSentenceThing
+            n = randint(1,2)
+            if n == 1:
+                endSentenceThing = "."
+            elif n == 2:
+                endSentenceThing = "!"
+
+        def sentence1():
+            propernoun()
+            verb()
+            adj()
+            noun()
+            endSentence()
+            global x
+            x = propernounThing + verbThing + adjThing + nounThing + endSentenceThing
+
+        def sentence2():
+            propernoun()
+            endingVerb()
+            endSentence()
+            global x
+            x = propernounThing + endingVerbThing + endSentenceThing
+
+        def paragraph():
+            y = randint(1,2)
+            if y == 1:
+                sentence1()
+                engine.say(x)
+            else:
+                sentence2()
+                engine.say(x)
+            print(x)
+            y = randint(1,2)
+            if y == 1:
+                sentence1()
+                engine.say(x)
+            else:
+                sentence2()
+                engine.say(x)
+            print(x)
+            y = randint(1,2)
+            if y == 1:
+                sentence1()
+                engine.say(x)
+            else:
+                sentence2()
+                engine.say(x)
+            print(x)
+            engine.runAndWait()
+
+        def story():
+            print("Chapter 1:")
+            engine.say("Chapter 1,")
+            engine.runAndWait()
+            paragraph()
+
+            print("Chapter 2:")
+            engine.say("Chapter 2,")
+            engine.runAndWait()
+            paragraph()
+
+            print("Chapter 3:")
+            engine.say("Chapter 3,")
+            engine.runAndWait()
+            paragraph()
+            
+            print("Chapter 4:")
+            engine.say("Chapter 4,")
+            engine.runAndWait()
+            paragraph()
+
+            print("Chapter 5:")
+            engine.say("Chapter 5,")
+            engine.runAndWait()
+            paragraph()
+
+            print("Chapter 6:")
+            engine.say("Chapter 6,")
+            engine.runAndWait()
+            paragraph()
+
+        story()
+
+    elif x == "tic tac toe" or x == "tictactoe":
+        engine.setProperty("rate",200)
+        
+        a1Occupied = False
+        a2Occupied = False
+        a3Occupied = False
+        b1Occupied = False
+        b2Occupied = False
+        b3Occupied = False
+        c1Occupied = False
+        c2Occupied = False
+        c3Occupied = False
+
+        squares = ["_","_","_","_","_","_","_","_","_"]
+
+        def choose():
+            global computerChoice
+            computerChoice = randint(0,8)
+
+        print('''  1 2 3
+        a _|_|_
+        b _|_|_
+        c  | | ''')
+
+        engine.say("Do you want easy or hard difficulty?")
+        engine.runAndWait()
+        difficulty = input("Do you want easy or hard difficulty? ")
+
+        #easy difficulty
+
+        if difficulty == "easy":
+            while True:
+                engine.say("Where do you want to go?")
+                engine.runAndWait()
+                p = input("Where do you want to go? ").lower()
+                
+                if p == "a1":
+                    if a1Occupied == True:
+                        print("That square is occupied. You lose your turn.")
+                        engine.say("That square is occupied. You lose your turn.")
+                        engine.runAndWait()
+                    else:
+                        squares[0] = "X"
+                        a1Occupied = True
+                elif p == "a2":
+                    if a2Occupied == True:
+                        print("That square is occupied. You lose your turn.")
+                        engine.say("That square is occupied. You lose your turn.")
+                        engine.runAndWait()
+                    else:
+                        squares[1] = "X"
+                        a2Occupied = True
+                elif p == "a3":
+                    if a3Occupied == True:
+                        print("That square is occupied. You lose your turn.")
+                        engine.say("That square is occupied. You lose your turn.")
+                        engine.runAndWait()
+                    else:
+                        squares[2] = "X"
+                        a3Occupied = True
+                elif p == "b1":
+                    if b1Occupied == True:
+                        print("That square is occupied. You lose your turn.")
+                        engine.say("That square is occupied. You lose your turn.")
+                        engine.runAndWait()
+                    else:
+                        squares[3] = "X"
+                        b1Occupied = True
+                elif p == "b2":
+                    if b2Occupied == True:
+                        print("That square is occupied. You lose your turn.")
+                        engine.say("That square is occupied. You lose your turn.")
+                        engine.runAndWait()
+                    else:
+                        squares[4] = "X"
+                        b2Occupied = True
+                elif p == "b3":
+                    if b3Occupied == True:
+                        print("That square is occupied. You lose your turn.")
+                        engine.say("That square is occupied. You lose your turn.")
+                        engine.runAndWait()
+                    else:
+                        squares[5] = "X"
+                        b3Occupied = True
+                elif p == "c1":
+                    if c1Occupied == True:
+                        print("That square is occupied. You lose your turn.")
+                        engine.say("That square is occupied. You lose your turn.")
+                        engine.runAndWait()
+                    else:
+                        squares[6] = "X"
+                        c1Occupied = True
+                elif p == "c2":
+                    if c2Occupied == True:
+                        print("That square is occupied. You lose your turn.")
+                        engine.say("That square is occupied. You lose your turn.")
+                        engine.runAndWait()
+                    else:
+                        squares[7] = "X"
+                        c2Occupied = True
+                elif p == "c3":
+                    if c3Occupied == True:
+                        print("That square is occupied. You lose your turn.")
+                        engine.say("That square is occupied. You lose your turn.")
+                        engine.runAndWait()
+                    else:
+                        squares[8] = "X"
+                        c3Occupied = True
+                else:
+                    print("Do you really not understand how to play Tic Tac Toe? You lose your turn")
+                    engine.say("Do you really not understand how to play Tic Tac Toe? You lose your turn")
+                    engine.runAndWait()
+                    
+                print(squares[0] + "|" + squares[1] + "|" + squares[2])
+                print(squares[3] + "|" + squares[4] + "|" + squares[5])
+                print(squares[6] + "|" + squares[7] + "|" + squares[8])
+
+                if squares[0] == squares[1] and squares[1] == squares[2] and squares[0] != "_":
+                    print("Good job! You win!")
+                    engine.say("Good job! You win!")
+                    engine.runAndWait()
+                    break
+                if squares[3] == squares[4] and squares[4] == squares[5] and squares[3] != "_":
+                    print("Good job! You win!")
+                    engine.say("Good job! You win!")
+                    engine.runAndWait()
+                    break
+                if squares[6] == squares[7] and squares[7] == squares[8] and squares[6] != "_":
+                    print("Good job! You win!")
+                    engine.say("Good job! You win!")
+                    engine.runAndWait()
+                    break
+                if squares[0] == squares[3] and squares[3] == squares[6] and squares[0] != "_":
+                    print("Good job! You win!")
+                    engine.say("Good job! You win!")
+                    engine.runAndWait()
+                    break
+                if squares[1] == squares[4] and squares[4] == squares[7] and squares[1] != "_":
+                    print("Good job! You win!")
+                    engine.say("Good job! You win!")
+                    engine.runAndWait()
+                    break
+                if squares[2] == squares[5] and squares[5] == squares[8] and squares[2] != "_":
+                    print("Good job! You win!")
+                    engine.say("Good job! You win!")
+                    engine.runAndWait()
+                    break
+                if squares[0] == squares[4] and squares[4] == squares[8] and squares[0] != "_":
+                    print("Good job! You win!")
+                    engine.say("Good job! You win!")
+                    engine.runAndWait()
+                    break
+                if squares[2] == squares[4] and squares[4] == squares[6] and squares[2] != "_":
+                    print("Good job! You win!")
+                    engine.say("Good job! You win!")
+                    engine.runAndWait()
+                    break
+
+                if squares[0] != "_" and squares[1] != "_" and squares[2] != "_" and squares[3] != "_" and squares[4] != "_" and squares[5] != "_" and squares[6] != "_" and squares[7] != "_" and squares[8] != "_":
+                    print("Cat!")
+                    engine.say("Cat!")
+                    engine.runAndWait()
+                    break
+                
+                #computer chooses
+                print("Computer is thinking...")
+                engine.say("Computer is thinking.")
+                engine.runAndWait()
+                
+                choose()
+                while squares[computerChoice] == "X" or squares[computerChoice] == "O":
+                    choose()
+
+                if computerChoice == 0:
+                    squares[0] = "O"
+                    a1Occupied = True
+                elif computerChoice == 1:
+                    squares[1] = "O"
+                    a2Occupied = True
+                elif computerChoice == 2:
+                    squares[2] = "O"
+                    a3Occupied = True
+                elif computerChoice == 3:
+                    squares[3] = "O"
+                    b1Occupied = True
+                elif computerChoice == 4:
+                    squares[4] = "O"
+                    b2Occupied = True
+                elif computerChoice == 5:
+                    squares[5] = "O"
+                    b3Occupied = True
+                elif computerChoice == 6:
+                    squares[6] = "O"
+                    c1Occupied = True
+                elif computerChoice == 7:
+                    squares[7] = "O"
+                    c2Occupied = True
+                elif computerChoice == 8:
+                    squares[8] = "O"
+                    c3Occupied = True
+
+                print(squares[0] + "|" + squares[1] + "|" + squares[2])
+                print(squares[3] + "|" + squares[4] + "|" + squares[5])
+                print(squares[6] + "|" + squares[7] + "|" + squares[8])
+
+                if squares[0] == squares[1] and squares[1] == squares[2] and squares[0] != "_":
+                    print("Get rekt, the computer won.")
+                    engine.say("Get rekt, the computer won.")
+                    engine.runAndWait()
+                    break
+                if squares[3] == squares[4] and squares[4] == squares[5] and squares[3] != "_":
+                    print("Get rekt, the computer won.")
+                    engine.say("Get rekt, the computer won.")
+                    engine.runAndWait()
+                    break
+                if squares[6] == squares[7] and squares[7] == squares[8] and squares[6] != "_":
+                    print("Get rekt, the computer won.")
+                    engine.say("Get rekt, the computer won.")
+                    engine.runAndWait()
+                    break
+                if squares[0] == squares[3] and squares[3] == squares[6] and squares[0] != "_":
+                    print("Get rekt, the computer won.")
+                    engine.say("Get rekt, the computer won.")
+                    engine.runAndWait()
+                    break
+                if squares[1] == squares[4] and squares[4] == squares[7] and squares[1] != "_":
+                    print("Get rekt, the computer won.")
+                    engine.say("Get rekt, the computer won.")
+                    engine.runAndWait()
+                    break
+                if squares[2] == squares[5] and squares[5] == squares[8] and squares[2] != "_":
+                    print("Get rekt, the computer won.")
+                    engine.say("Get rekt, the computer won.")
+                    engine.runAndWait()
+                    break
+                if squares[0] == squares[4] and squares[4] == squares[8] and squares[0] != "_":
+                    print("Get rekt, the computer won.")
+                    engine.say("Get rekt, the computer won.")
+                    engine.runAndWait()
+                    break
+                if squares[2] == squares[4] and squares[4] == squares[6] and squares[2] != "_":
+                    print("Get rekt, the computer won.")
+                    engine.say("Get rekt, the computer won.")
+                    engine.runAndWait()
+                    break
+                
+                if squares[0] != "_" and squares[1] != "_" and squares[2] != "_" and squares[3] != "_" and squares[4] != "_" and squares[5] != "_" and squares[6] != "_" and squares[7] != "_" and squares[8] != "_":
+                    print("Cat!")
+                    engine.say("Cat!")
+                    engine.runAndWait()
+                    break
+
+        #hard difficulty
+
+        elif difficulty == "hard":
+            while True:
+                engine.say("Where do you want to go?")
+                engine.runAndWait()
+                p = input("Where do you want to go? ").lower()
+                
+                if p == "a1":
+                    if a1Occupied == True:
+                        print("That square is occupied. You lose your turn.")
+                        engine.say("That square is occupied. You lose your turn.")
+                        engine.runAndWait()
+                    else:
+                        squares[0] = "X"
+                        a1Occupied = True
+                elif p == "a2":
+                    if a2Occupied == True:
+                        print("That square is occupied. You lose your turn.")
+                        engine.say("That square is occupied. You lose your turn.")
+                        engine.runAndWait()
+                    else:
+                        squares[1] = "X"
+                        a2Occupied = True
+                elif p == "a3":
+                    if a3Occupied == True:
+                        print("That square is occupied. You lose your turn.")
+                        engine.say("That square is occupied. You lose your turn.")
+                        engine.runAndWait()
+                    else:
+                        squares[2] = "X"
+                        a3Occupied = True
+                elif p == "b1":
+                    if b1Occupied == True:
+                        print("That square is occupied. You lose your turn.")
+                        engine.say("That square is occupied. You lose your turn.")
+                        engine.runAndWait()
+                    else:
+                        squares[3] = "X"
+                        b1Occupied = True
+                elif p == "b2":
+                    if b2Occupied == True:
+                        print("That square is occupied. You lose your turn.")
+                        engine.say("That square is occupied. You lose your turn.")
+                        engine.runAndWait()
+                    else:
+                        squares[4] = "X"
+                        b2Occupied = True
+                elif p == "b3":
+                    if b3Occupied == True:
+                        print("That square is occupied. You lose your turn.")
+                        engine.say("That square is occupied. You lose your turn.")
+                        engine.runAndWait()
+                    else:
+                        squares[5] = "X"
+                        b3Occupied = True
+                elif p == "c1":
+                    if c1Occupied == True:
+                        print("That square is occupied. You lose your turn.")
+                        engine.say("That square is occupied. You lose your turn.")
+                        engine.runAndWait()
+                    else:
+                        squares[6] = "X"
+                        c1Occupied = True
+                elif p == "c2":
+                    if c2Occupied == True:
+                        print("That square is occupied. You lose your turn.")
+                        engine.say("That square is occupied. You lose your turn.")
+                        engine.runAndWait()
+                    else:
+                        squares[7] = "X"
+                        c2Occupied = True
+                elif p == "c3":
+                    if c3Occupied == True:
+                        print("That square is occupied. You lose your turn.")
+                        engine.say("That square is occupied. You lose your turn.")
+                        engine.runAndWait()
+                    else:
+                        squares[8] = "X"
+                        c3Occupied = True
+                else:
+                    print("Do you really not understand how to play Tic Tac Toe? You lose your turn")
+                    engine.say("Do you really not understand how to play Tic Tac Toe? You lose your turn")
+                    engine.runAndWait()
+                    
+                print(squares[0] + "|" + squares[1] + "|" + squares[2])
+                print(squares[3] + "|" + squares[4] + "|" + squares[5])
+                print(squares[6] + "|" + squares[7] + "|" + squares[8])
+
+                if squares[0] == squares[1] and squares[1] == squares[2] and squares[0] != "_":
+                    print("Good job! You win!")
+                    engine.say("Good job! You win!")
+                    engine.runAndWait()
+                    break
+                elif squares[3] == squares[4] and squares[4] == squares[5] and squares[3] != "_":
+                    print("Good job! You win!")
+                    engine.say("Good job! You win!")
+                    engine.runAndWait()
+                    break
+                elif squares[6] == squares[7] and squares[7] == squares[8] and squares[6] != "_":
+                    print("Good job! You win!")
+                    engine.say("Good job! You win!")
+                    engine.runAndWait()
+                    break
+                elif squares[0] == squares[3] and squares[3] == squares[6] and squares[0] != "_":
+                    print("Good job! You win!")
+                    engine.say("Good job! You win!")
+                    engine.runAndWait()
+                    break
+                elif squares[1] == squares[4] and squares[4] == squares[7] and squares[1] != "_":
+                    print("Good job! You win!")
+                    engine.say("Good job! You win!")
+                    engine.runAndWait()
+                    break
+                elif squares[2] == squares[5] and squares[5] == squares[8] and squares[2] != "_":
+                    print("Good job! You win!")
+                    engine.say("Good job! You win!")
+                    engine.runAndWait()
+                    break
+                elif squares[0] == squares[4] and squares[4] == squares[8] and squares[0] != "_":
+                    print("Good job! You win!")
+                    engine.say("Good job! You win!")
+                    engine.runAndWait()
+                    break
+                elif squares[2] == squares[4] and squares[4] == squares[6] and squares[2] != "_":
+                    print("Good job! You win!")
+                    engine.say("Good job! You win!")
+                    engine.runAndWait()
+                    break
+                
+                if squares[0] != "_" and squares[1] != "_" and squares[2] != "_" and squares[3] != "_" and squares[4] != "_" and squares[5] != "_" and squares[6] != "_" and squares[7] != "_" and squares[8] != "_":
+                    print("Cat!")
+                    engine.say("Cat!")
+                    engine.runAndWait()
+                    break
+
+                #computer chooses
+                print("Computer is thinking...")
+                engine.say("Computer is thinking.")
+                engine.runAndWait()
+                
+                #if computer can win (ik this is a mess)
+                if squares[0] == squares[1] and squares[2] == "_" and squares[0] != "_" and squares[0] == "O":
+                    squares[2] = "O"
+
+                elif squares[1] == squares[2] and squares[0] == "_" and squares[1] != "_" and squares[1] == "O":
+                    squares[0] = "O"
+
+                elif squares[0] == squares[2] and squares[1] == "_" and squares[0] != "_" and squares[0] == "O":
+                    squares[1] = "O"
+
+                elif squares[3] == squares[4] and squares[5] == "_" and squares[3] != "_" and squares[3] == "O":
+                    squares[5] = "O"
+
+                elif squares[4] == squares[5] and squares[3] == "_" and squares[4] != "_" and squares[4] == "O":
+                    squares[3] = "O"
+
+                elif squares[3] == squares[5] and squares[4] == "_" and squares[3] != "_" and squares[3] == "O":
+                    squares[4] = "O"
+
+                elif squares[6] == squares[7] and squares[8] == "_" and squares[6] != "_" and squares[6] == "O":
+                    squares[8] = "O"
+
+                elif squares[7] == squares[8] and squares[6] == "_" and squares[7] != "_" and squares[7] == "O":
+                    squares[6] = "O"
+
+                elif squares[6] == squares[8] and squares[7] == "_" and squares[6] != "_" and squares[6] == "O":
+                    squares[7] = "O"
+
+                elif squares[0] == squares[3] and squares[6] == "_" and squares[0] != "_" and squares[0] == "O":
+                    squares[6] = "O"
+
+                elif squares[3] == squares[6] and squares[0] == "_" and squares[3] != "_" and squares[3] == "O":
+                    squares[0] = "O"
+
+                elif squares[0] == squares[6] and squares[3] == "_" and squares[0] != "_" and squares[0] == "O":
+                    squares[3] = "O"
+
+                elif squares[1] == squares[4] and squares[7] == "_" and squares[1] != "_" and squares[1] == "O":
+                    squares[7] = "O"
+
+                elif squares[4] == squares[7] and squares[1] == "_" and squares[4] != "_" and squares[4] == "O":
+                    squares[1] = "O"
+
+                elif squares[1] == squares[7] and squares[4] == "_" and squares[1] != "_" and squares[1] == "O":
+                    squares[4] = "O"
+
+                elif squares[2] == squares[5] and squares[8] == "_" and squares[2] != "_" and squares[2] == "O":
+                    squares[8] = "O"
+
+                elif squares[5] == squares[8] and squares[2] == "_" and squares[5] != "_" and squares[5] == "O":
+                    squares[2] = "O"
+
+                elif squares[2] == squares[8] and squares[5] == "_" and squares[2] != "_" and squares[2] == "O":
+                    squares[5] = "O"
+
+                elif squares[0] == squares[4] and squares[8] == "_" and squares[0] != "_" and squares[0] == "O":
+                    squares[8] = "O"
+
+                elif squares[4] == squares[8] and squares[0] == "_" and squares[4] != "_" and squares[4] == "O":
+                    squares[0] = "O"
+
+                elif squares[0] == squares[8] and squares[4] == "_" and squares[0] != "_" and squares[0] == "O":
+                    squares[4] = "O"
+
+                elif squares[2] == squares[4] and squares[6] == "_" and squares[2] != "_" and squares[2] == "O":
+                    squares[6] = "O"
+
+                elif squares[4] == squares[6] and squares[2] == "_" and squares[4] != "_" and squares[4] == "O":
+                    squares[2] = "O"
+
+                elif squares[2] == squares[6] and squares[4] == "_" and squares[2] != "_" and squares[2] == "O":
+                    squares[4] = "O"
+
+                #if computer can block
+
+                elif squares[0] == squares[1] and squares[2] == "_" and squares[0] != "_":
+                    squares[2] = "O"
+
+                elif squares[1] == squares[2] and squares[0] == "_" and squares[1] != "_":
+                    squares[0] = "O"
+
+                elif squares[0] == squares[2] and squares[1] == "_" and squares[0] != "_":
+                    squares[1] = "O"
+
+                elif squares[3] == squares[4] and squares[5] == "_" and squares[3] != "_":
+                    squares[5] = "O"
+
+                elif squares[4] == squares[5] and squares[3] == "_" and squares[4] != "_":
+                    squares[3] = "O"
+
+                elif squares[3] == squares[5] and squares[4] == "_" and squares[3] != "_":
+                    squares[4] = "O"
+
+                elif squares[6] == squares[7] and squares[8] == "_" and squares[6] != "_":
+                    squares[8] = "O"
+
+                elif squares[7] == squares[8] and squares[6] == "_" and squares[7] != "_":
+                    squares[6] = "O"
+
+                elif squares[6] == squares[8] and squares[7] == "_" and squares[6] != "_":
+                    squares[7] = "O"
+
+                elif squares[0] == squares[3] and squares[6] == "_" and squares[0] != "_":
+                    squares[6] = "O"
+
+                elif squares[3] == squares[6] and squares[0] == "_" and squares[3] != "_":
+                    squares[0] = "O"
+
+                elif squares[0] == squares[6] and squares[3] == "_" and squares[0] != "_":
+                    squares[3] = "O"
+
+                elif squares[1] == squares[4] and squares[7] == "_" and squares[1] != "_":
+                    squares[7] = "O"
+
+                elif squares[4] == squares[7] and squares[1] == "_" and squares[4] != "_":
+                    squares[1] = "O"
+
+                elif squares[1] == squares[7] and squares[4] == "_" and squares[1] != "_":
+                    squares[4] = "O"
+
+                elif squares[2] == squares[5] and squares[8] == "_" and squares[2] != "_":
+                    squares[8] = "O"
+
+                elif squares[5] == squares[8] and squares[2] == "_" and squares[5] != "_":
+                    squares[2] = "O"
+
+                elif squares[2] == squares[8] and squares[5] == "_" and squares[2] != "_":
+                    squares[5] = "O"
+
+                elif squares[0] == squares[4] and squares[8] == "_" and squares[0] != "_":
+                    squares[8] = "O"
+
+                elif squares[4] == squares[8] and squares[0] == "_" and squares[4] != "_":
+                    squares[0] = "O"
+
+                elif squares[0] == squares[8] and squares[4] == "_" and squares[0] != "_":
+                    squares[4] = "O"
+
+                elif squares[2] == squares[4] and squares[6] == "_" and squares[2] != "_":
+                    squares[6] = "O"
+
+                elif squares[4] == squares[6] and squares[2] == "_" and squares[4] != "_":
+                    squares[2] = "O"
+
+                elif squares[2] == squares[6] and squares[4] == "_" and squares[2] != "_":
+                    squares[4] = "O"
+
+                #if computer can't win or block pick a random square
+                else:
+                    choose()
+                    while squares[computerChoice] == "X" or squares[computerChoice] == "O":
+                        choose()
+
+                    if computerChoice == 0:
+                        squares[0] = "O"
+                        a1Occupied = True
+                    elif computerChoice == 1:
+                        squares[1] = "O"
+                        a2Occupied = True
+                    elif computerChoice == 2:
+                        squares[2] = "O"
+                        a3Occupied = True
+                    elif computerChoice == 3:
+                        squares[3] = "O"
+                        b1Occupied = True
+                    elif computerChoice == 4:
+                        squares[4] = "O"
+                        b2Occupied = True
+                    elif computerChoice == 5:
+                        squares[5] = "O"
+                        b3Occupied = True
+                    elif computerChoice == 6:
+                        squares[6] = "O"
+                        c1Occupied = True
+                    elif computerChoice == 7:
+                        squares[7] = "O"
+                        c2Occupied = True
+                    elif computerChoice == 8:
+                        squares[8] = "O"
+                        c3Occupied = True
+
+                print(squares[0] + "|" + squares[1] + "|" + squares[2])
+                print(squares[3] + "|" + squares[4] + "|" + squares[5])
+                print(squares[6] + "|" + squares[7] + "|" + squares[8])
+
+                if squares[0] == "O" and squares[1] == "O" and squares[2] == "O" or squares[3] == "O" and squares[4] == "O" and squares[5] == "O" or squares[6] == "O" and squares[7] == "O" and squares[8] == "O" or squares[0] == "O" and squares[3] == "O" and squares[6] == "O" or squares[1] == "O" and squares[4] == "O" and squares[7] == "O" or squares[2] == "O" and squares[5] == "O" and squares[8] == "O" or squares[0] == "O" and squares[4] == "O" and squares[8] == "O" or squares[2] == "O" and squares[4] == "O" and squares[6] == "O":
+                    print("Computer won, get rekt")
+                    engine.say("Computer won, get rekt")
+                    engine.runAndWait()
+                    break
+
+                if squares[0] != "_" and squares[1] != "_" and squares[2] != "_" and squares[3] != "_" and squares[4] != "_" and squares[5] != "_" and squares[6] != "_" and squares[7] != "_" and squares[8] != "_":
+                    print("Cat!")
+                    engine.say("Cat!")
+                    engine.runAndWait()
+                    break
+
+    elif x == "hangman":
+        words = ["knob","jazz","water","awkward","bungler","caterpillar","supercalifragilisticexpialidocious","phlegm","twelfth","liquidize","twisty","cellular","jelly","graze","fences","geese","ogre","dwarves","squid","fjord","croquet"]
+        wordChoice = words[randint(0,20)]
+
+        hangmen = [''' ___
+        /   |
+        |
+        |
+        |
+        ''',''' ___
+        /   |
+        |   O
+        |
+        |
+        ''',''' ___
+        /   |
+        |   O
+        |   |
+        |
+        ''',''' ___
+        /   |
+        |   O
+        |  /|
+        |
+        ''',''' ___
+        /   |
+        |   O
+        |  /|\\
+        |
+        ''',''' ___
+        /   |
+        |   O
+        |  /|\\
+        |  /
+        ''',''' ___
+        /   |
+        |   O
+        |  /|\\
+        |  / \ ''']
+
+        numberOfCharacters = len(wordChoice)
+        hangmanNumber = 0
+        spaces = ["_" for i in range(numberOfCharacters)]
+        guessed = ""
+
+        while True:
+            print(hangmen[hangmanNumber])
+            print(*spaces)
+            engine.say("What letter do you want to guess?")
+            engine.runAndWait()
+            letter = input("What letter do you want to guess? ").lower()
+            if letter == "jaxatax is a 1337 haxor wizard":
+                print("You're correct. Here's a hint: the first 3 letters are " + wordChoice[0] + wordChoice[1] + wordChoice[2] + ".")
+                engine.say("You're correct. Here's a hint: the first 3 letters are " + wordChoice[0] + " " + wordChoice[1] + " and " + wordChoice[2] + ".")
+                engine.runAndWait()
+                spaces[0] = wordChoice[0]
+                spaces[1] = wordChoice[1]
+                spaces[2] = wordChoice[2]
+            elif len(letter) != 1:
+                print("Please enter a single letter.")
+                engine.say("Please enter a single letter.")
+                engine.runAndWait()
+            elif letter in guessed:
+                print("You've guessed that letter.")
+                engine.say("You've guessed that letter.")
+                engine.runAndWait()
+            elif letter in wordChoice:
+                print("You got it right! Good job!")
+                engine.say("You got it right! Good job!")
+                engine.runAndWait()
+                index = 0
+                while index < len(wordChoice):
+                    index = wordChoice.find(letter,index)
+                    if index == -1:
+                        break
+                    letterPosition = index
+                    spaces[letterPosition] = letter
+                    index += 1
+                guessed += letter
+            else:
+                print("You got it wrong. Get rekt m8.")
+                engine.say("You got it wrong. Get rekt mate.")
+                engine.runAndWait()
+                hangmanNumber += 1
+                guessed += letter
+            if "_" not in spaces:
+                print(hangmen[hangmanNumber])
+                print(*spaces)
+                print("Good job! You won!")
+                engine.say("Good job! You won!")
+                engine.runAndWait()
+                break
+            elif hangmanNumber == 6:
+                print("You lose. Get rekt m8. The word you had so much trouble guessing was " + wordChoice + ". You were just beaten by a program written by a 13 year-old.")
+                engine.say("You lose. Get rekt mate. The word you had so much trouble guessing was " + wordChoice + ". You were just beaten by a program written by a 13 year-old.")
+                engine.runAndWait()
+                break
+
+    elif x == "":
+        engine.setProperty("rate",200)
+        print("You need to type something in before you hit enter, genius.")
+        engine.say("You need to type something in before you hit enter, genius.")
+        engine.runAndWait()
+
     elif x == "mute":
-        engine.setProperty("volume", 0)
+        engine.setProperty("volume",0)
 
     elif x == "unmute":
-        engine.setProperty("volume", 1)
-
+        engine.setProperty("volume",1)
+        
     elif x == "info":
         engine.setProperty("rate",200)
         print("Ziri was developed in 2019 by the NSA to gather information about-oh wait, I wasn't supposed to say that?")
@@ -1341,8 +2563,8 @@ Now he is in serious pain.''')
     
     elif x == "help":
         engine.setProperty("rate",230)
-        print('Here are the skillz I can has. If you want me to give you the time and date, type "time". If you want me to give you your fortune, type "fortune". If you want me to set a timer, type "timer". If you want me to repeat a word or phrase, type "repeater". If you want to play snake, type "snake". If you want me to tell a joke, type "joke". If you want me to say a poem, type "poem". If you want me to insult you, type "insult". If you want me to be creepy, type "creepy". If you want me to die, type "die". If you want me to poop, type "poop". If you want me to beatbox, type "beatbox". If you want me to annoy the living daylights out of you, type "annoy". If you want me to give you the weather, type "weather". If you want to calculate something, type "calculator". If you want me to give you a meme, type "meme". If you want me to sing Happy Birthday, type "birthday". If you want to play Rock, Paper, Scissors, type "rps". If you want to search something on Google, type "search". If you want to take an IQ test, type "iq test". If you want to mute me so you only see the text, type "mute". If you want to unmute me, type "unmute". If you want to know more about Ziri, type "info".')
-        engine.say("Here are the skillz I can has. If you want me to give you the time and date, type time. If you want me to give you your fortune, type fortune. If you want me to set a timer, type timer. If you want me to repeat a word or phrase, type repeater. If you want to play snake, type snake. If you want me to tell a joke, type joke. If you want me to say a poem, type poem. If you want me to insult you, type insult. If you want me to be creepy, type creepy. If you want me to die, type die. If you want me to poop, type poop. If you want me to beatbox, type beatbox. If you want me to annoy the living daylights out of you, type annoy. If you want me to give you the weather, type weather. If you want to calculate something, type calculator. If you want me to give you a meme, type meme. If you want me to sing happy birthday, type birthday. If you want to play Rock, Paper, Scissors, type rps. If you want to search something on Google, type search. If you want to take an I Q test, type I Q test. If you want to mute me so you only see the text, type mute. If you want to unmute me, type unmute. If you want to know more about Ziri, type info.")
+        print('Here are the skillz I can has. If you want me to give you the time and date, type "time". If you want me to give you your fortune, type "fortune". If you want me to set a timer, type "timer". If you want me to repeat a word or phrase, type "repeater". If you want to play snake, type "snake". If you want me to tell a joke, type "joke". If you want me to say a poem, type "poem". If you want me to insult you, type "insult". If you want me to be creepy, type "creepy". If you want me to die, type "die". If you want me to poop, type "poop". If you want me to beatbox, type "beatbox". If you want me to annoy the living daylights out of you, type "annoy". If you want me to give you the weather, type "weather". If you want to calculate something, type "calculator". If you want me to give you a meme, type "meme". If you want me to sing Happy Birthday, type "birthday". If you want to play Rock, Paper, Scissors, type "rps". If you want to search something on Google, type "search". If you want to take an IQ test, type "iq test". If you want me to tell you a funny story, type "story". If you want to play tic tac toe, type "tic tac toe". If you want to mute me so you only see the text, type "mute". If you want to unmute me, type "unmute". If you want to know more about Ziri, type "info".')
+        engine.say("Here are the skillz I can has. If you want me to give you the time and date, type time. If you want me to give you your fortune, type fortune. If you want me to set a timer, type timer. If you want me to repeat a word or phrase, type repeater. If you want to play snake, type snake. If you want me to tell a joke, type joke. If you want me to say a poem, type poem. If you want me to insult you, type insult. If you want me to be creepy, type creepy. If you want me to die, type die. If you want me to poop, type poop. If you want me to beatbox, type beatbox. If you want me to annoy the living daylights out of you, type annoy. If you want me to give you the weather, type weather. If you want to calculate something, type calculator. If you want me to give you a meme, type meme. If you want me to sing happy birthday, type birthday. If you want to play Rock, Paper, Scissors, type rps. If you want to search something on Google, type search. If you want to take an I Q test, type I Q test. If you want me to tell you a funny story, type story. If you want to play tic tac toe, type tic tac toe. If you want to mute me so you only see the text, type mute. If you want me to tell you a funny story, type story. If you want to unmute me, type unmute. If you want to know more about Ziri, type info.")
         engine.runAndWait()
 
     else:
@@ -1390,4 +2612,3 @@ Now he is in serious pain.''')
             print("Sorry, I don't know that command.")
             engine.say("Sorry, I don't know that command.")
             engine.runAndWait()
-
