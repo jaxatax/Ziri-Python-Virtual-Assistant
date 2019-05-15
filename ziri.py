@@ -1226,159 +1226,179 @@ Now he is in serious pain.''')
         #specifically made to upset people
         engine.setProperty("rate",200)
         iq = 100
-        
-        print("Question 1:")
-        engine.say("Question 1. What is 2 + 3?")
-        engine.runAndWait()
-        q = input("What is 2 + 3? ")
-        if q == "5":
-            print("Good job! You got it right.")
-            engine.say("Good job! You got it right.")
+        for i in range(1):
+            print("Question 1:")
+            engine.say("Question 1. What is 2 + 3?")
             engine.runAndWait()
-            iq += 10
-        else:
-            print("No. The answer is obviously 5.")
-            engine.say("No. The answer is obviously 5.")
+            q = input("What is 2 + 3? ")
+            if q == "5":
+                print("Good job! You got it right.")
+                engine.say("Good job! You got it right.")
+                engine.runAndWait()
+                iq += 10
+            elif q == "exit":
+                break
+            else:
+                print("No. The answer is obviously 5.")
+                engine.say("No. The answer is obviously 5.")
+                engine.runAndWait()
+                iq += -10
+            
+            print("Question 2:")
+            engine.say("Question 2. What is the opposite of hot?")
             engine.runAndWait()
-            iq += -10
-        
-        print("Question 2:")
-        engine.say("Question 2. What is the opposite of hot?")
-        engine.runAndWait()
-        q = input("What is the opposite of hot? ").lower()
-        if q == "cold":
-            print("Good job! You got it right.")
-            engine.say("Good job! You got it right.")
+            q = input("What is the opposite of hot? ").lower()
+            if q == "cold":
+                print("Good job! You got it right.")
+                engine.say("Good job! You got it right.")
+                engine.runAndWait()
+                iq += 10
+            elif q == "exit":
+                break
+            else:
+                print("No. The answer is obviously cold.")
+                engine.say("No. The answer is obviously cold.")
+                engine.runAndWait()
+                iq += -10
+            
+            print("Question 3:")
+            engine.say("Question 3. What is 202 + 35?")
             engine.runAndWait()
-            iq += 10
-        else:
-            print("No. The answer is obviously cold.")
-            engine.say("No. The answer is obviously cold.")
-            engine.runAndWait()
-            iq += -10
-        
-        print("Question 3:")
-        engine.say("Question 3. What is 202 + 35?")
-        engine.runAndWait()
-        q = input("What is 202 + 35? ")
-        if q == "237":
-            print("Good job! You got it right.")
-            engine.say("Good job! You got it right.")
-            engine.runAndWait()
-            iq += 10
-        else:
-            print("No. The answer is obviously 237.")
-            engine.say("No. The answer is obviously 237.")
-            engine.runAndWait()
-            iq += -10
+            q = input("What is 202 + 35? ")
+            if q == "237":
+                print("Good job! You got it right.")
+                engine.say("Good job! You got it right.")
+                engine.runAndWait()
+                iq += 10
+            elif q == "exit":
+                break
+            else:
+                print("No. The answer is obviously 237.")
+                engine.say("No. The answer is obviously 237.")
+                engine.runAndWait()
+                iq += -10
 
-        print("Question 4:")
-        engine.say("Question 4. Is Xbox better than Playstation?")
-        engine.runAndWait()
-        q = input("Is Xbox better than Playstation? ").lower()
-        if q == "yes":
-            print("Good job! You got it right.")
-            engine.say("Good job! You got it right.")
+            print("Question 4:")
+            engine.say("Question 4. Is Xbox better than Playstation?")
             engine.runAndWait()
-            iq += 10
-        else:
-            print("No. Xbox is obviously better.")
-            engine.say("No. Xbox is obviously better.")
+            q = input("Is Xbox better than Playstation? ").lower()
+            if q == "yes":
+                print("Good job! You got it right.")
+                engine.say("Good job! You got it right.")
+                engine.runAndWait()
+                iq += 10
+            elif q == "exit":
+                break
+            else:
+                print("No. Xbox is obviously better.")
+                engine.say("No. Xbox is obviously better.")
+                engine.runAndWait()
+                iq += -10
+            
+            print("Question 5:")
+            engine.say("Question 5. What does the E stand for in E equals m c squared?")
             engine.runAndWait()
-            iq += -10
-        
-        print("Question 5:")
-        engine.say("Question 5. What does the E stand for in E equals m c squared?")
-        engine.runAndWait()
-        q = input("What does the E stand for in E=mc^2? ").lower()
-        if q == "energy":
-            print("Good job! You got it right.")
-            engine.say("Good job! You got it right.")
-            engine.runAndWait()
-            iq += 10
-        else:
-            print("No. E obviously stands for energy.")
-            engine.say("No. E obviously stands for energy.")
-            engine.runAndWait()
-            iq += -10
+            q = input("What does the E stand for in E=mc^2? ").lower()
+            if q == "energy":
+                print("Good job! You got it right.")
+                engine.say("Good job! You got it right.")
+                engine.runAndWait()
+                iq += 10
+            elif q == "exit":
+                break
+            else:
+                print("No. E obviously stands for energy.")
+                engine.say("No. E obviously stands for energy.")
+                engine.runAndWait()
+                iq += -10
 
-        print("Question 6:")
-        engine.say("Question 6. What does Dy stand for on the periodic table?")
-        engine.runAndWait()
-        q = input("What does D Y stand for on the periodic table? ").lower()
-        if q == "dysprosium":
-            print("Good job! You got it right.")
-            engine.say("Good job! You got it right.")
+            print("Question 6:")
+            engine.say("Question 6. What does Dy stand for on the periodic table?")
             engine.runAndWait()
-            iq += 10
-        else:
-            print("No. Dy obviously stands for dysprosium.")
-            engine.say("No. D Y obviously stands for dysprosium.")
-            engine.runAndWait()
-            iq += -10
+            q = input("What does Dy stand for on the periodic table? ").lower()
+            if q == "dysprosium":
+                print("Good job! You got it right.")
+                engine.say("Good job! You got it right.")
+                engine.runAndWait()
+                iq += 10
+            elif q == "exit":
+                break
+            else:
+                print("No. Dy obviously stands for dysprosium.")
+                engine.say("No. D Y obviously stands for dysprosium.")
+                engine.runAndWait()
+                iq += -10
 
-        print("Question 7:")
-        engine.say("Question 7. How much wood could a woodchuck chuck if a woodchuck could chuck wood?")
-        engine.runAndWait()
-        q = input("How much wood could a woodchuck chuck if a woodchuck could chuck wood? ").lower()
-        if q == "5 pieces":
-            print("Good job! You got it right.")
-            engine.say("Good job! You got it right.")
+            print("Question 7:")
+            engine.say("Question 7. How much wood could a woodchuck chuck if a woodchuck could chuck wood?")
             engine.runAndWait()
-            iq += 10
-        else:
-            print("No. If a woodchuck could chuck wood, the woodchuck would obviously have a wood-chucking capacity of 5 pieces.")
-            engine.say("No. If a woodchuck could chuck wood, the woodchuck would obviously have a wood chucking capacity of 5 pieces.")
-            engine.runAndWait()
-            iq += -10
+            q = input("How much wood could a woodchuck chuck if a woodchuck could chuck wood? ").lower()
+            if q == "5 pieces":
+                print("Good job! You got it right.")
+                engine.say("Good job! You got it right.")
+                engine.runAndWait()
+                iq += 10
+            elif q == "exit":
+                break
+            else:
+                print("No. If a woodchuck could chuck wood, the woodchuck would obviously have a wood-chucking capacity of 5 pieces.")
+                engine.say("No. If a woodchuck could chuck wood, the woodchuck would obviously have a wood chucking capacity of 5 pieces.")
+                engine.runAndWait()
+                iq += -10
 
-        print("Question 8:")
-        engine.say("Question 8. Should you put the toilet paper roll so that the end is facing outward or inward?")
-        engine.runAndWait()
-        q = input("Should you put the toilet paper roll so that the end is facing outward or inward? ").lower()
-        if q == "outward" or q == "facing outward":
-            print("Good job! You got it right.")
-            engine.say("Good job! You got it right.")
+            print("Question 8:")
+            engine.say("Question 8. Should you put the toilet paper roll so that the end is facing outward or inward?")
             engine.runAndWait()
-            iq += 10
-        else:
-            print("No. The toilet paper roll should obviously face outward, because that allows easier access to the end.")
-            engine.say("No. The toilet paper roll should obviously face outward, because that allows easier access to the end.")
-            engine.runAndWait()
-            iq += -10
+            q = input("Should you put the toilet paper roll so that the end is facing outward or inward? ").lower()
+            if q == "outward" or q == "facing outward":
+                print("Good job! You got it right.")
+                engine.say("Good job! You got it right.")
+                engine.runAndWait()
+                iq += 10
+            elif q == "exit":
+                break
+            else:
+                print("No. The toilet paper roll should obviously face outward, because that allows easier access to the end.")
+                engine.say("No. The toilet paper roll should obviously face outward, because that allows easier access to the end.")
+                engine.runAndWait()
+                iq += -10
 
-        print("Question 9:")
-        engine.say("Question 9. Multiply 60,111,227 by 50, subtract 21, then take the square root. What is the answer?")
-        engine.runAndWait()
-        q = input("Multiply 60,111,227 by 50, subtract 21, then take the square root. What is the answer? ")
-        if q == "54823":
-            print("CHEATER!")
-            engine.say("Cheater!")
+            print("Question 9:")
+            engine.say("Question 9. Multiply 60,111,227 by 50, subtract 21, then take the square root. What is the answer?")
             engine.runAndWait()
-            iq += 10
-        else:
-            print("No. The answer is obviously 54823.")
-            engine.say("No. The answer is obviously 54823.")
-            engine.runAndWait()
-            iq += -10
+            q = input("Multiply 60,111,227 by 50, subtract 21, then take the square root. What is the answer? ")
+            if q == "54823":
+                print("CHEATER!")
+                engine.say("Cheater!")
+                engine.runAndWait()
+                iq += 10
+            elif q == "exit":
+                break
+            else:
+                print("No. The answer is obviously 54823.")
+                engine.say("No. The answer is obviously 54823.")
+                engine.runAndWait()
+                iq += -10
 
-        print("Question 10:")
-        engine.say("Question 10. Is Ziri better than Siri?")
-        engine.runAndWait()
-        q = input("Is Ziri better than Siri? ").lower()
-        if q == "yes":
-            print("Good job! You got it right. Here are your results:")
-            engine.say("Good job! You got it right. Here are your results:")
+            print("Question 10:")
+            engine.say("Question 10. Is Ziri better than Siri?")
             engine.runAndWait()
-            iq += 10
-        else:
+            q = input("Is Ziri better than Siri? ").lower()
+            if q == "yes":
+                print("Good job! You got it right. Here are your results:")
+                engine.say("Good job! You got it right. Here are your results:")
+                engine.runAndWait()
+                iq += 10
+            elif q == "exit":
+                break
+            else:
+                t = True
+        if t == True:
             print("I'm not talking to you anymore, traitor.")
             engine.say("I'm not talking to you anymore, traitor.")
             engine.runAndWait()
             break
-        
-        #after all questions
-        if iq > 100:
+        elif iq > 100:
             print("Your IQ was " + str(iq) + ". You're above average!")
             engine.say("Your IQ was " + str(iq) + ". You're above average!")
             engine.runAndWait()
