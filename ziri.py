@@ -295,19 +295,24 @@ while True:
         engine.say("How many hours do you want your timer to be set for? Just a warning, you won't be able to use Ziri while the timer is running.")
         engine.runAndWait()
         j = input("How many hours do you want the timer to be set for? Just a warning, you won't be able to use Ziri while the timer is running. ")
-        j = float(j) * 3600
-        engine.say("How many minutes do you want your timer to be set for?")
-        engine.runAndWait()
-        k = input("How many minutes do you want your timer to be set for? ")
-        k = float(k) * 60
-        engine.say("How many seconds do you want your timer to be set for?")
-        engine.runAndWait()
-        l = input("How many seconds do you want your timer to be set for? ")
-        l = float(l)
-        time.sleep(j + k + l)
-        print("Your timer is done.")
-        engine.say("Bee bee bee boo boo. Bee bee bee boo boo. Your timer is done.")
-        engine.runAndWait()
+        try:
+            j = float(j) * 3600
+            engine.say("How many minutes do you want your timer to be set for?")
+            engine.runAndWait()
+            k = input("How many minutes do you want your timer to be set for? ")
+            k = float(k) * 60
+            engine.say("How many seconds do you want your timer to be set for?")
+            engine.runAndWait()
+            l = input("How many seconds do you want your timer to be set for? ")
+            l = float(l)
+            time.sleep(j + k + l)
+            print("Your timer is done.")
+            engine.say("Bee bee bee boo boo. Bee bee bee boo boo. Your timer is done.")
+            engine.runAndWait()
+        except ValueError:
+            print("You can't set a timer for that amount of time, nimrod.")
+            engine.say("You can't set a timer for that amount of time, nimrod.")
+            engine.runAndWait()
 
     elif x == "repeater":
         b = True
@@ -360,8 +365,6 @@ while True:
         #                        Dinis Marques                            #
         #                         Snake Python                            #
         # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-        import turtle
-        import random
         #head orientation
         h = [0]
 
@@ -1890,6 +1893,8 @@ c  | | ''')
                 engine.say("Where do you want to go?")
                 engine.runAndWait()
                 p = input("Where do you want to go? ").lower()
+                if p == "exit":
+                    break
                 
                 if p == "a1":
                     if a1Occupied == True:
@@ -2114,6 +2119,8 @@ c  | | ''')
                 engine.say("Where do you want to go?")
                 engine.runAndWait()
                 p = input("Where do you want to go? ").lower()
+                if p == "exit":
+                    break
                 
                 if p == "a1":
                     if a1Occupied == True:
@@ -2496,6 +2503,8 @@ c  | | ''')
             engine.say("What letter do you want to guess?")
             engine.runAndWait()
             letter = input("What letter do you want to guess? ").lower()
+            if letter == "exit":
+                break
             if letter == "jaxatax is a 1337 haxor wizard":
                 print("You're correct. Here's a hint: the first 3 letters are " + wordChoice[0] + wordChoice[1] + wordChoice[2] + ".")
                 engine.say("You're correct. Here's a hint: the first 3 letters are " + wordChoice[0] + " " + wordChoice[1] + " and " + wordChoice[2] + ".")
@@ -2554,18 +2563,41 @@ c  | | ''')
 
     elif x == "unmute":
         engine.setProperty("volume",1)
-        
+
     elif x == "info":
         engine.setProperty("rate",200)
         print("Ziri was developed in 2019 by the NSA to gather information about-oh wait, I wasn't supposed to say that?")
         engine.say("Ziri was developed in 2019 by the NSA to gather information about, oh wait, I wasn't supposed to say that?")
         engine.runAndWait()
-    
+
     elif x == "help":
-        engine.setProperty("rate",230)
-        print('Here are the skillz I can has. If you want me to give you the time and date, type "time". If you want me to give you your fortune, type "fortune". If you want me to set a timer, type "timer". If you want me to repeat a word or phrase, type "repeater". If you want to play snake, type "snake". If you want me to tell a joke, type "joke". If you want me to say a poem, type "poem". If you want me to insult you, type "insult". If you want me to be creepy, type "creepy". If you want me to die, type "die". If you want me to poop, type "poop". If you want me to beatbox, type "beatbox". If you want me to annoy the living daylights out of you, type "annoy". If you want me to give you the weather, type "weather". If you want to calculate something, type "calculator". If you want me to give you a meme, type "meme". If you want me to sing Happy Birthday, type "birthday". If you want to play Rock, Paper, Scissors, type "rps". If you want to search something on Google, type "search". If you want to take an IQ test, type "iq test". If you want me to tell you a funny story, type "story". If you want to play tic tac toe, type "tic tac toe". If you want to mute me so you only see the text, type "mute". If you want to unmute me, type "unmute". If you want to know more about Ziri, type "info".')
-        engine.say("Here are the skillz I can has. If you want me to give you the time and date, type time. If you want me to give you your fortune, type fortune. If you want me to set a timer, type timer. If you want me to repeat a word or phrase, type repeater. If you want to play snake, type snake. If you want me to tell a joke, type joke. If you want me to say a poem, type poem. If you want me to insult you, type insult. If you want me to be creepy, type creepy. If you want me to die, type die. If you want me to poop, type poop. If you want me to beatbox, type beatbox. If you want me to annoy the living daylights out of you, type annoy. If you want me to give you the weather, type weather. If you want to calculate something, type calculator. If you want me to give you a meme, type meme. If you want me to sing happy birthday, type birthday. If you want to play Rock, Paper, Scissors, type rps. If you want to search something on Google, type search. If you want to take an I Q test, type I Q test. If you want me to tell you a funny story, type story. If you want to play tic tac toe, type tic tac toe. If you want to mute me so you only see the text, type mute. If you want me to tell you a funny story, type story. If you want to unmute me, type unmute. If you want to know more about Ziri, type info.")
-        engine.runAndWait()
+        print('''Here is a list of the skillz I can has.
+If you want me to give you the time and date, type "time".
+If you want me to give you your fortune, type "fortune".
+If you want me to set a timer, type "timer".
+If you want me to repeat a word or phrase, type "repeater".
+If you want to play snake, type "snake".
+If you want me to tell a joke, type "joke".
+If you want me to say a poem, type "poem".
+If you want me to insult you, type "insult".
+If you want me to be creepy, type "creepy".
+If you want me to die, type "die".
+If you want me to poop, type "poop".
+If you want me to beatbox, type "beatbox".
+If you want me to annoy the living daylights out of you, type "annoy".
+If you want me to give you the weather, type "weather".
+If you want to calculate something, type "calculator".
+If you want me to give you a meme, type "meme".
+If you want me to sing Happy Birthday, type "birthday".
+If you want to play Rock, Paper, Scissors, type "rps".
+If you want to search something on Google, type "search".
+If you want to take an IQ test, type "iq test".
+If you want me to tell you a funny story, type "story".
+If you want to play tic tac toe, type "tic tac toe".
+If you want to mute me so you only see the text, type "mute".
+If you want to unmute me, type "unmute".
+If you want to know more about Ziri, type "info".
+''')
 
     else:
         if ics == False:
